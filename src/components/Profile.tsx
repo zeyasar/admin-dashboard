@@ -66,7 +66,7 @@ const Profile = () => {
 
   useEffect(() => {
     findUser(uid)
-  }, [])
+  })
   
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
