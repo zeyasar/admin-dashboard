@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import React, { useState, useContext, useEffect } from "react";
+import React, {  useContext, useEffect } from "react";
 import {
   Avatar,
   Container,
@@ -15,7 +15,6 @@ import { styled, alpha } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from '@mui/icons-material/Edit';
 import editIcon from "../assets/editIcon.png";
 import {
   UsersContext,
@@ -59,7 +58,7 @@ const Profile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { findUser, editItem, setEditItem, updateUserById, users } = useContext(UsersContext) as UsersContextType
+  const { findUser, editItem, setEditItem, updateUserById } = useContext(UsersContext) as UsersContextType
 
 
   const uid = Number(id)
