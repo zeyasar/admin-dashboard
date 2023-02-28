@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Avatar,
   Container,
@@ -7,7 +7,6 @@ import {
   Button,
   FormControl,
   InputLabel,
-  FilledInput,
   IconButton,
   Typography,
   InputBase,
@@ -15,7 +14,14 @@ import {
 import { styled, alpha } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
 import editIcon from "../assets/editIcon.png";
+import {
+  UsersContext,
+  UsersContextType,
+} from "../context/UsersContext";
+
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   'label + &': {
@@ -53,17 +59,26 @@ const Profile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [form, setForm] = useState({
-    firstName: "Fatih",
-    lastName: "Kocabıyık",
-    userName: "FFK",
-    phone: "0564 789 27 98",
-    mail: "asdasd@gmail.com",
-  });
+  const { findUser, editItem, setEditItem, updateUserById, users } = useContext(UsersContext) as UsersContextType
+
+
+  const uid = Number(id)
+  
+
+  useEffect(() => {
+    findUser(uid)
+  }, [])
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setEditItem({ ...editItem, [e.target.name]: e.target.value }); 
   };
+
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    updateUserById(uid, editItem)
+    console.log(editItem)
+  }
 
   return (
     <div>
@@ -81,7 +96,7 @@ const Profile = () => {
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               badgeContent={<SmallAvatar alt="circle" src={editIcon} />}
             >
-              <Avatar alt="user" sx={{ width: 150, height: 150 }} />
+              <Avatar alt="user" src={editItem.avatar} sx={{ width: 150, height: 150 }} />
             </Badge>
           </Box>
           <Box sx={{ padding: "20px" }}>
@@ -91,6 +106,7 @@ const Profile = () => {
                 width: "300px",
                 flexDirection: "column",
               }}
+              onSubmit={handleSubmit}
             >
               <FormControl style={{ marginBottom: "10px" }}>
                 <InputLabel htmlFor="fullname">
@@ -99,8 +115,8 @@ const Profile = () => {
                 <BootstrapInput
                   id="fullname"
                   type="text"
-                  name="firstName"
-                  value={form.firstName}
+                  name="fullname"
+                  value={editItem.fullname}
                   onChange={handleChange}
                 />
               </FormControl>
@@ -113,7 +129,7 @@ const Profile = () => {
                   id="phone"
                   type="text"
                   name="phone"
-                  value={form.phone}
+                  value={editItem.phone}
                   onChange={handleChange}
                 />
               </FormControl>
@@ -125,8 +141,8 @@ const Profile = () => {
                 <BootstrapInput
                   id="mail"
                   type="email"
-                  name="mail"
-                  value={form.mail}
+                  name="email"
+                  value={editItem.email}
                   onChange={handleChange}
                 />
               </FormControl>
@@ -139,13 +155,14 @@ const Profile = () => {
                   id="birthday"
                   type="date"
                   name="birthday"  
-                  value=''
+                  value={editItem.birthday}
                   onChange={handleChange}
                 />
               </FormControl>
               <Box>
-              <Button>Save Profile</Button>
-              <Button>Save Profile</Button>
+              <Button  startIcon={<DeleteIcon />} >Hesabı Sil</Button>
+              <Button variant="contained" type="submit">Hesabı Güncelle</Button>
+            
               </Box>
             </form>
           </Box>
