@@ -66,6 +66,7 @@ const Profile = () => {
 
   useEffect(() => {
     findUser(uid)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
 
