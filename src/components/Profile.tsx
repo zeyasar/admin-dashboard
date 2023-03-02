@@ -20,6 +20,7 @@ import {
   UsersContext,
   UsersContextType,
 } from "../context/UsersContext";
+import { useConfirm } from "material-ui-confirm";
 
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
@@ -57,8 +58,8 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
 const Profile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const { findUser, editItem, setEditItem, updateUserById } = useContext(UsersContext) as UsersContextType
+  const confirm = useConfirm();
+  const { findUser, editItem, setEditItem, updateUserById, setUsers, users } = useContext(UsersContext) as UsersContextType
 
 
   const uid = Number(id)
@@ -69,6 +70,18 @@ const Profile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
+  const handleDelete = (id:number) => {
+    confirm({ description: 'Kullanıcıyı silmek üzeresiniz, bu işlem geri alınamaz.',
+    title:'Emin misiniz?',
+    confirmationText: 'Sil',
+    cancellationText:'Vazgeç'
+  })
+      .then(() => {
+        setUsers(users.filter((other) => other.id !== id))
+        navigate('/users')
+      })
+      .catch(() => console.log("Silme işlemi iptal edildi."));
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditItem({ ...editItem, [e.target.name]: e.target.value }); 
@@ -87,7 +100,7 @@ const Profile = () => {
           <IconButton onClick={() => navigate("/users")}>
             <ArrowBackIosIcon color="primary" />
           </IconButton>
-          <Typography sx={{ my: "auto" }}>Kullanıcı_</Typography>
+          <Typography sx={{ my: "auto" }}>Kullanıcı_{editItem.fullname}</Typography>
         </Box>
         <div style={{ display: "flex", height: "70vh" }}>
           <Box sx={{ mt: 3 }}>
@@ -160,7 +173,7 @@ const Profile = () => {
                 />
               </FormControl>
               <Box>
-              <Button  startIcon={<DeleteIcon />} >Hesabı Sil</Button>
+              <Button  startIcon={<DeleteIcon />} onClick={() => handleDelete(uid)}>Hesabı Sil</Button>
               <Button variant="contained" type="submit">Hesabı Güncelle</Button>
             
               </Box>

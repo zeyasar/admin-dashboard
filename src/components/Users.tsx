@@ -16,8 +16,8 @@ import {
   UsersContext,
   UsersContextType,
 } from "../context/UsersContext";
-import { useContext, useState } from "react";
-import { Button, IconButton, Typography } from "@mui/material";
+import { useContext } from "react";
+import { IconButton, Typography } from "@mui/material";
 import "./users.css";
 import { useNavigate } from "react-router-dom";
 import { useConfirm } from "material-ui-confirm";
