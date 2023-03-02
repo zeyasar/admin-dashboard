@@ -12,6 +12,7 @@ export interface IUserType {
 
 export interface UsersContextType {
   users: IUserType[];
+  setUsers:IUserType[] | any
   editItem:IUserType;
   setEditItem:any;
   updateUserById:any;
@@ -218,6 +219,7 @@ const UsersContextProvider = (props: any) => {
     editItem,
     setEditItem,
     updateUserById,
+    setUsers,
   };
   return (
     <UsersContext.Provider value={contextValue}>
