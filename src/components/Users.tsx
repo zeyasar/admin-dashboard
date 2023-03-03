@@ -21,6 +21,7 @@ import { IconButton, Typography } from "@mui/material";
 import "./users.css";
 import { useNavigate } from "react-router-dom";
 import { useConfirm } from "material-ui-confirm";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 
 
@@ -84,15 +85,21 @@ const Users = () => {
                       <TableCell align="center">{user.phone}</TableCell>
 
                       <TableCell align="left">
+                        <Box display={"flex"}>
                         <Typography
                           className={`${
-                            user.status === "Aktif" ? "green" : ""
+                            user.status === "Aktif" ? "green" : user.status === "Yasaklandı" ? 'pink' : 'red'
                           } text`}
                         >
                           {user.status}
                         </Typography>
+                        {user.status === 'Kısıtlandı' && (
+                          
+                          <InfoOutlinedIcon sx={{marginY:'auto', ml:2}}/>
+                        )}
+                        </Box>
                       </TableCell>
-                      <TableCell align="center" sx={{ display: "flex" }}>
+                      <TableCell sx={{ display: "flex" }}>
                         <IconButton
                           onClick={() => navigate(`/profile/${user.id}`)}
                         >

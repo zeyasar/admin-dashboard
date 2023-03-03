@@ -112,7 +112,7 @@ const Profile = () => {
               <Avatar alt="user" src={editItem.avatar} sx={{ width: 150, height: 150 }} />
             </Badge>
           </Box>
-          <Box sx={{ padding: "20px" }}>
+          <Box sx={{ padding: "20px" }}> 
             <form
               style={{
                 display: "flex",
@@ -172,10 +172,9 @@ const Profile = () => {
                   onChange={handleChange}
                 />
               </FormControl>
-              <Box>
-              <Button  startIcon={<DeleteIcon />} onClick={() => handleDelete(uid)}>Hesabı Sil</Button>
-              <Button variant="contained" type="submit">Hesabı Güncelle</Button>
-            
+              <Box mt={5}>
+              <Button color="error" startIcon={<DeleteIcon />} sx={{borderRadius:'50px', textTransform:'capitalize', mr:2, backgroundColor:'rgba(235, 87, 87, 0.1)'}} onClick={() => handleDelete(uid)}>Hesabı Sil</Button>
+              <Button variant="contained" type="submit" sx={{borderRadius:'50px', textTransform:'capitalize'}}>Hesabı Güncelle</Button>
               </Box>
             </form>
           </Box>
