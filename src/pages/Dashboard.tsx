@@ -28,7 +28,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import PowerSettingsNewOutlinedIcon from "@mui/icons-material/PowerSettingsNewOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -131,6 +131,8 @@ function DashboardContent() {
     setOpen(!open);
   };
 
+  const user = sessionStorage.getItem("user")
+  const navigate = useNavigate()
   return (
   
       <Box sx={{ display: "flex" }}>
@@ -183,7 +185,7 @@ function DashboardContent() {
                   color: "#1F2633",
                 }}
               >
-                emre
+                {user}
               </Typography>
               <IconButton sx={{ ml: 1 }}>
                 <KeyboardArrowDownIcon color="primary" />
@@ -225,7 +227,7 @@ function DashboardContent() {
                   color: "#1F2633",
                 }}
               >
-                emre@mayzor.net
+                {user}
               </Typography>
               <Typography
                 sx={{
@@ -300,7 +302,7 @@ function DashboardContent() {
               </Typography>
               <KeyboardArrowUpOutlinedIcon color="primary" />
             </Box>
-            <ListItemButton>
+            <ListItemButton onClick={()=>navigate('/users')}>
               <ListItemIcon>
                 <img
                   src={kullanıcı}
