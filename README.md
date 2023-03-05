@@ -12,14 +12,13 @@ Projeyi klonlayın
   git clone https://github.com/zeyasar/mayzor-task
 ```
 
-Proje dizinine gidin
-
-```bash
-  cd my-project
-```
-
 Gerekli paketleri yükleyin
 
 ```bash
   npm install
+```
+
+Projeyi browserda açmak için
+```bash
+  npm start
 ```
