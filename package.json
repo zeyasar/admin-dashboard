@@ -45,5 +45,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "cypress": "^12.8.1"
+  },
+  "description": "Kullanıcılara ait listenin görüntülendiği silme ve düzenleme işlemlerinin yapıldığı bir dasboard uygulamasıdır. E mail ile dashboard sayfasına ulaşılabilir bunu sağlamak için private router kullanıldı. Geçerli bir e mail girildikten sonra kullanıcıların listesinin olduğu sayfaya ulaşıyor. Buradan düzenleme butonuna basıldığında kullanıcının detaylı bilgi sayfasına ulaşılıyor.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeyasar/mayzor-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeyasar/mayzor-task/issues"
+  },
+  "homepage": "https://github.com/zeyasar/mayzor-task#readme"
 }
