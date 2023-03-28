@@ -36,4 +36,4 @@ Açılan Chrome penceresinde E2E specs sütununda
 * LoginTests.cy.js
 * RememberMeTest.cy.js
 * UsersTests.cy.js
-dosyaları sıra ile seçilerek test dosyaları çalıştırılabilir.
+dosyaları sıra ile seçilerek test dosyalarını çalıştırın.
