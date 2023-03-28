@@ -22,3 +22,18 @@ Projeyi browserda açmak için
 ```bash
   npm start
 ```
+
+Proje Testlerini çalıştırmak için
+
+Proje test süreçlerinde Cypress open source test otomasyon aracı kullanılmıştır.
+
+```bash
+  npx cypress open
+```
+> Komutu çalıştırıldıktan sonra E2E Testing seçilmeli ve Crome tarayıcı seçilerek test ekranı açılmalıdır.
+
+Açılan Chrome penceresinde E2E specs sütununda 
+* LoginTests.cy.js
+* RememberMeTest.cy.js
+* UsersTests.cy.js
+dosyaları sıra ile seçilerek test dosyaları çalıştırılabilir.

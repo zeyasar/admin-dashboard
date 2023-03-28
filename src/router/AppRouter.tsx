@@ -9,6 +9,7 @@ import Dashboard from "../pages/Dashboard";
 import LoginPage from "../pages/LoginPage";
 import Profile from "../components/Profile";
 import Users from "../components/Users";
+import React from "react";
 
 const PrivateRouter = () => {
   const user = sessionStorage.getItem("user");
