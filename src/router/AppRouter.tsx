@@ -21,7 +21,6 @@ function AppRouter() {
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-
           <Route element={<PrivateRouter />}>
             <Route path="/" element={<Dashboard />}>
               <Route path="/users" element={<Users />} />

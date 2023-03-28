@@ -13,7 +13,7 @@ import Image from "../assets/mayzorlogin.png";
 import logo from "../assets/logo.png";
 import './loginpage.css'
 import { InputLabel } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const style = {
   position: 'absolute' as 'absolute',
